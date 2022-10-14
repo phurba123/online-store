@@ -6,4 +6,33 @@
 
 /* *{box-sizing: border-box;} */
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+:root {
+    --yellow: #fff4bd;
+    --rose-quartz: #F4B9B8;
+    --speaermint: #85D2D0;
+    --purple: #887bb0;
+}
+
+/* .purple-bg {
+    background-color: var(--speaermint);
+}
+*/
+
+/* .mat-card {
+    background-color: var(--purple);
+} */
+/* colors
+Yellow
+#FFF4BD
+
+Rose Quartz
+#F4B9B8
+
+Spearmint
+#85D2D0
+
+Purple
+#887BB0
+*/

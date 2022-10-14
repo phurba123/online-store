@@ -7,12 +7,20 @@ import { HeaderComponent } from './components/header/header.component';
 import MaterialModules from './material.module';
 import { HomeComponent } from './components/home/home.component';
 import AppRoutingModule from './routing.module';
+import { ProductHeaderComponent } from './components/product-header/product-header.component';
+import { FiltersComponent } from './components/filters/filters.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ProductHeaderComponent,
+    FiltersComponent,
+    ProductItemComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
