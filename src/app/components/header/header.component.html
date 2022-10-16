@@ -2,7 +2,7 @@
     <a routerLink="home">Shopping Store</a>
 
     <button mat-icon-button [matMenuTriggerFor]="cartMenu">
-        <mat-icon class="" matBadge="2" matBadgeColor="warn">
+        <mat-icon class="" matBadge="{{totalQuantity}}" matBadgeColor="warn">
             shopping_cart
         </mat-icon>
     </button>
@@ -12,23 +12,15 @@
         <div class="p-3 divide-y divide-solid">
             <!-- menu header -->
             <div class="justify-between flex pb-3">
-                <span class="mr-16">2 Items</span>
+                <span class="mr-16">{{ cart.items.length}} Items</span>
                 <a routerLink="cart" matbutton>View</a>
             </div>
 
             <!-- menu body to show cart items with total price -->
             <div class="py-3">
-                <div class="flex justify-between font-light mb-2">
-                    mouse X 2
-                    <span class="font-bold">{{ 10 | currency}}</span>
-                </div>
-                <div class="flex justify-between font-light mb-2">
-                    keyboard X 2
-                    <span class="font-bold">{{ 15 | currency}}</span>
-                </div>
-                <div class="flex justify-between font-light mb-2">
-                    ssd X 2
-                    <span class="font-bold">{{ 50 | currency}}</span>
+                <div class="flex justify-between font-light mb-2" *ngFor="let cartItem of cart.items">
+                    {{ cartItem.name }} X {{ cartItem.quantity }}
+                    <span class="font-bold">{{ cartItem.price | currency: 'INR'}}</span>
                 </div>
                 
             </div>
@@ -36,16 +28,16 @@
             <!-- summary for menu -->
             <div class="flex justify-between py-3">
                 Total : 
-                <span>{{ 75 | currency}}</span>
+                <span>{{ getTotal(cart.items)| currency}}</span>
             </div>
 
             <!-- action links -->
             <div class="flex justify-between pt-3">
-                <button class="bg-rose-600 rounded-full w-9 h-9 text-white">
+                <button class="bg-rose-600 rounded-full w-9 h-9 text-white" (click)= "clearCart()">
                     <mat-icon>remove_shopping_cart</mat-icon>
                 </button>
                 
-                <button class="bg-green-600 rounded-full w-9 h-9 text-white">
+                <button class="bg-green-600 rounded-full w-9 h-9 text-white" routerLink="/cart">
                     <mat-icon>shopping_cart</mat-icon>
                 </button>
             </div>

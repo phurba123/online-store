@@ -10,11 +10,12 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 
 
 const modules : any[] = [MatToolbarModule, MatIconModule, MatBadgeModule, MatMenuModule, MatSidenavModule, MatCardModule,
-MatButtonModule, MatListModule, MatExpansionModule, MatGridListModule, MatTableModule]
+MatButtonModule, MatListModule, MatExpansionModule, MatGridListModule, MatTableModule, MatSnackBarModule]
 
 @NgModule({
     imports:[...modules],
