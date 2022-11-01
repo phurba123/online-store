@@ -16,15 +16,6 @@ export class ProductItemComponent implements OnInit {
   constructor(private _cartService: CartService) { }
 
   ngOnInit(): void {
-    this.product = {
-      id:  1,
-      title: 'title',
-      category: 'Shoes',
-      price: 150,
-      description: 'description about this product',
-      image: 'https://via.placeholder.com/150'
-    }
-    console.log('product item ngoninit')
   }
 
   onAddToCart() {

@@ -2,6 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { cart, cartItem } from 'src/app/models/cart.model';
 import { CartService } from 'src/app/services/cart.service';
 import { Subject, takeUntil } from 'rxjs';
+import { StoreService } from 'src/app/services/store.service';
+import {loadStripe} from '@stripe/stripe-js';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +19,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   $destroy: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private _cartService: CartService) { }
+  constructor(private _cartService: CartService, private _storeService: StoreService) { }
 
   ngOnInit(): void {
     this._cartService.cart.pipe(takeUntil(this.$destroy)).subscribe((_cart) => {
@@ -43,6 +46,17 @@ export class CartComponent implements OnInit, OnDestroy {
 
   removeItemFromCart(item: cartItem) {
     this._cartService.removeFromCart(item);
+  }
+
+  checkout(): void {
+    this._storeService.onCheckout(this.cart.items).subscribe(
+      async(res: any) => {
+        const stripe = await loadStripe(environment.stripe_pub_key);
+        stripe?.redirectToCheckout({
+          sessionId: res.id
+        })
+      }
+    )
   }
 
   ngOnDestroy(): void {

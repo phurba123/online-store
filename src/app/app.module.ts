@@ -12,6 +12,8 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartService } from './services/cart.service';
+import { StoreService } from './services/store.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import { CartService } from './services/cart.service';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModules,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [ CartService],
+  providers: [ CartService, StoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

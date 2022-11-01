@@ -10,7 +10,9 @@ export class ProductHeaderComponent implements OnInit {
   sort:string = 'desc';
   itemsCount: number = 12;
 
-  @Output() colCountChange: EventEmitter<number> = new EventEmitter<number>;
+  @Output() colCountChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output() itemsCountChange: EventEmitter<number> = new EventEmitter<number>()
+  @Output() sortChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -19,10 +21,12 @@ export class ProductHeaderComponent implements OnInit {
 
   onSortUpdate(updateSort: string) : void {
     this.sort = updateSort;
+    this.sortChange.emit(updateSort)
   }
 
   itemsCountUpdate(newCount: number): void {
     this.itemsCount = newCount;
+    this.itemsCountChange.emit(newCount)
   }
 
   onColumnUpdate(colNum: number): void {

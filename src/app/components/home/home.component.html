@@ -7,12 +7,12 @@
  </mat-drawer>
 
  <mat-drawer-content class="p-6 bg-none">
-    <product-header (colCountChange)="colCountChange($event)"></product-header>
+    <product-header (itemsCountChange)="onItemsCountChange($event)" (sortChange)="onSortChange($event)" (colCountChange)="colCountChange($event)"></product-header>
 
     <mat-grid-list [cols]="noOfCol" gutterSize="16" [rowHeight]="rowHeight">
-      <mat-grid-tile *ngFor="let x of [23,23,1,24,11]">
+      <mat-grid-tile *ngFor="let product of products">
 
-        <product-item (addToCart)="onAddingToCart($event)" [fullWidthMode]="noOfCol === 1" class="w-full"></product-item>
+        <product-item  [product]="product" (addToCart)="onAddingToCart($event)" [fullWidthMode]="noOfCol === 1" class="w-full"></product-item>
 
       </mat-grid-tile>
     </mat-grid-list>

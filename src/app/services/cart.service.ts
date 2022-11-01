@@ -7,27 +7,7 @@ import { cart, cartItem } from '../models/cart.model';
   providedIn: 'root',
 })
 export class CartService {
-  cart = new BehaviorSubject<cart>({ items: [{
-    id: 1,
-    name: 'snickers',
-    price: 130,
-    quantity: 1,
-    product: 'https://via.placeholder.com/150'
-  },
-  {
-    id: 2,
-    name: 'jacket',
-    price: 230,
-    quantity: 3,
-    product: 'https://via.placeholder.com/150'
-  },
-  {
-    id: 3,
-    name: 'jacket',
-    price: 830,
-    quantity: 1,
-    product: 'https://via.placeholder.com/150'
-  }] });
+  cart = new BehaviorSubject<cart>({ items: [] });
 
   constructor(private _snackBar: MatSnackBar) {}
 
